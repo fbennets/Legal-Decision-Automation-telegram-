@@ -150,7 +150,7 @@ def demo(update, context):
         return check_access_code(update, context)
 
 def end (update, context):
-    update.message.reply_text('Danke, dass du den Bot benutzt hast! Klicke auf /new, um neuzustarten.')
+    update.message.reply_text('Thanks for using the bot! Click /new to restart.')
     context.chat_data.clear()
     return CHECK_ACCESS_CODE
 
