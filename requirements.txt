@@ -1,0 +1,3 @@
+python-telegram-bot==12.7
+json_logic_qubit==0.9.1
+html2text==2020.1
