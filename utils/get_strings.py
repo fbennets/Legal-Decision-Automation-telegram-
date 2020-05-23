@@ -1,17 +1,17 @@
 import importlib
-import ..settings
+import settings.settings as settings
 
 def import_strings():
     global strings
     try:
-        strings = importlib.import_module('..locale.{}'.format(settings.LANG))
+        strings = importlib.import_module('locale.{}'.format(settings.LANG))
     except ModuleNotFoundError:
-        strings = importlib.import_module('..locale.{}'.format('en'))
+        strings = importlib.import_module('locale.{}'.format('en'))
     global default_strings
     try:
-        default_strings = importlib.import_module('..locale.{}-default'.format(settings.LANG))
+        default_strings = importlib.import_module('locale.{}-default'.format(settings.LANG))
     except ModuleNotFoundError:
-        default_strings = importlib.import_module('..locale.{}-default'.format('en'))
+        default_strings = importlib.import_module('locale.{}-default'.format('en'))
 
 
 def get_strings (key):

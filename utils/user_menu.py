@@ -6,14 +6,10 @@ from telegram import (ParseMode, InlineKeyboardButton, InlineKeyboardMarkup)
 
 from utils.get_strings import get_strings as _
 
-import utils.get_strings
-
-import utils.utils
 from utils.utils import send_typing_action, build_menu
 
-
-from user_menu_data import user_menu_data as menu_data
-import settings
+from utils.user_menu_data import user_menu_data as menu_data
+import settings.settings as settings
 
 main = importlib.import_module('od-telegram-bot')
 

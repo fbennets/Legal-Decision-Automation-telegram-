@@ -13,10 +13,10 @@ from json_logic import jsonLogic
 import html2text
 
 from utils.get_strings import get_strings as _
-import utils.admin_utils
-import user_menu
-import settings
+import utils.admin
 
+import utils.user_menu
+import settings.settings as settings
 
 from utils.utils import send_typing_action, user_is_admin, restricted
 
@@ -228,11 +228,11 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            MAIN_MENU : [CallbackQueryHandler(user_menu.check_query), CommandHandler('new', start), CommandHandler('settings', admin_utils.admin_settings), MessageHandler(Filters.text, user_menu.check_input)],
+            MAIN_MENU : [CallbackQueryHandler(user_menu.check_query), CommandHandler('new', start), CommandHandler('settings', utils.admin.admin_settings), MessageHandler(Filters.text, user_menu.check_input)],
 
             CHECK_ANSWER: [CommandHandler('restart', restart), CommandHandler('back', back), CommandHandler('menu', start), MessageHandler(Filters.text, check_answer)],
 
-            ADMIN_TOOLS : [CallbackQueryHandler(admin_utils.check_query), CommandHandler('reboot', reboot), MessageHandler(Filters.text, admin_utils.check_input)]
+            ADMIN_TOOLS : [CallbackQueryHandler(utils.admin.check_query), CommandHandler('reboot', reboot), MessageHandler(Filters.text, utils.admin.check_input)]
 
         },
         fallbacks=[CommandHandler('end', end)],

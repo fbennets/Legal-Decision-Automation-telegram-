@@ -1,6 +1,6 @@
 import os, importlib
 
-admin_set = importlib.import_module('admin_settings')
+admin_set = importlib.import_module('custom_settings')
 
 TOKEN = os.environ['OD_BOT_TOKEN']
 ADMINS = os.environ.get('OD_BOT_ADMINS', '').split(',')

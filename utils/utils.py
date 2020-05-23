@@ -2,7 +2,7 @@ from functools import wraps
 from telegram import ChatAction
 import importlib, requests
 
-import ..settings
+import settings.settings as settings
 
 LIST_OF_ADMINS = settings.ADMINS
 

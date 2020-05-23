@@ -4,17 +4,16 @@ import sys, os, re, importlib, fileinput, codecs
 # Import modules from python-telegram-bot
 from telegram import (ParseMode, InlineKeyboardButton, InlineKeyboardMarkup)
 
-import get_strings
+import utils.get_strings
 
-from get_strings import get_strings as _
+from utils.get_strings import get_strings as _
 
 import utils.utils
 from utils.utils import send_typing_action, user_is_admin, build_menu, restricted
 
-
-from admin_utils_data import admin_menu_data as menu_data
-import ..settings
-import user_menu
+from utils.admin_data import admin_menu_data as menu_data
+import settings.settings as settings
+import utils.user_menu
 
 main = importlib.import_module('od-telegram-bot')
 
@@ -74,7 +73,7 @@ def check_query(update, context):
             query.edit_message_reply_markup(None)
             context.chat_data['menu_log'] = ['start']
             context.chat_data['current_menu_step'] = 'start'
-            return user_menu.show_inline_menu(update, context, 'menu')
+            return utils.user_menu.show_inline_menu(update, context, 'menu')
 
     # If admin was supposed to make an input but used the buttons instead
     # Now: also if user used back button
@@ -200,8 +199,8 @@ def check_input(update, context):
 
 def reload_settings():
     settings.reload_settings()
-    get_strings.reload_messages()
+    utils.get_strings.reload_messages()
     importlib.reload(settings)
-    utils.reload_settings()
-    user_menu.reload_settings()
+    utils.utils.reload_settings()
+    utils.user_menu.reload_settings()
     main.reload_settings()
