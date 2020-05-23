@@ -1,2 +1,0 @@
-
-welcome_message = 'ZUZUZUZUZU'
