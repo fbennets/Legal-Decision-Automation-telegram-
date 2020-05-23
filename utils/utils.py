@@ -28,7 +28,6 @@ def restricted(func):
     def wrapped(update, context, *args, **kwargs):
         user_name = update.effective_user.username
         if user_name not in LIST_OF_ADMINS:
-            print("Unauthorized access denied for {}.".format(user_name))
             return
         return func(update, context, *args, **kwargs)
     return wrapped
@@ -57,7 +56,6 @@ def reload_settings():
 def test_image(path):
     try:
         r = requests.head(path)
-        print(r.headers)
         if (r.headers['Content-Type'] == 'image/png') or (r.headers['Content-Type'] == 'image/jpg') or (r.headers['Content-Type'] == 'image/jpeg'):
             return r.status_code == requests.codes.ok
         else:

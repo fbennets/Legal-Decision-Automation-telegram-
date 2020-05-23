@@ -133,7 +133,7 @@ def check_input(update, context):
 
         # Open settings file and set new var
             var = menu_data[current_menu_step]['var']
-            settings_file = 'admin_settings.py'
+            settings_file = 'settings/custom_settings.py'
             re_pattern = fr'^{var}.*$'
             new_entry = f"{var} = '{new_value}'" if current_menu_step != 'available_queries' else f"{var} = {new_value}"
             var_exists = False

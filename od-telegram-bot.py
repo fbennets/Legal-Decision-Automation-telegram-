@@ -50,7 +50,7 @@ def start(update, context):
     else:
         if user_is_admin(update):
             update.effective_message.reply_text('You are an Admin of this bot! Click /settings to edit the settings of your bot.', parse_mode=ParseMode.MARKDOWN)
-        return user_menu.main_menu(update, context)
+        return utils.user_menu.main_menu(update, context)
 
 # Load the query using the provided access code from the Open Decision builder instance
 def load_tree(update, context):
@@ -228,7 +228,7 @@ def main():
         entry_points=[CommandHandler('start', start)],
 
         states={
-            MAIN_MENU : [CallbackQueryHandler(user_menu.check_query), CommandHandler('new', start), CommandHandler('settings', utils.admin.admin_settings), MessageHandler(Filters.text, user_menu.check_input)],
+            MAIN_MENU : [CallbackQueryHandler(utils.user_menu.check_query), CommandHandler('new', start), CommandHandler('settings', utils.admin.admin_settings), MessageHandler(Filters.text, utils.user_menu.check_input)],
 
             CHECK_ANSWER: [CommandHandler('restart', restart), CommandHandler('back', back), CommandHandler('menu', start), MessageHandler(Filters.text, check_answer)],
 

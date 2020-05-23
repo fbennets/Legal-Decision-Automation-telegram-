@@ -100,10 +100,8 @@ def check_query(update, context):
     answer = query.data
 
     if answer == 'back':
-        print(context.chat_data['menu_log'])
         current_menu_step = context.chat_data['menu_log'][-2]
         context.chat_data['menu_log'][:2]
-        print(current_menu_step)
         context.chat_data['current_menu_step'] = current_menu_step
         return show_inline_menu(update, context, 'menu')
 
@@ -129,7 +127,6 @@ def check_query(update, context):
 
 # Entry point if the user sent message
 def check_input(update, context):
-    print(update.message.text)
     start_query = str(update.message.text).strip()
     if re.match("^[a-z]{10}$", start_query):
         context.chat_data['start_query'] = start_query
