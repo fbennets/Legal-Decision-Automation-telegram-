@@ -1,0 +1,163 @@
+[[package]]
+category = "main"
+description = "Screen-scraping library"
+name = "beautifulsoup4"
+optional = false
+python-versions = "*"
+version = "4.9.0"
+
+[package.dependencies]
+soupsieve = [">1.2", "<2.0"]
+
+[[package]]
+category = "main"
+description = "Python package for providing Mozilla's CA Bundle."
+name = "certifi"
+optional = false
+python-versions = "*"
+version = "2020.4.5.1"
+
+[[package]]
+category = "main"
+description = "Foreign Function Interface for Python calling C code."
+name = "cffi"
+optional = false
+python-versions = "*"
+version = "1.14.0"
+
+[package.dependencies]
+pycparser = "*"
+
+[[package]]
+category = "main"
+description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
+name = "cryptography"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
+version = "2.9.2"
+
+[package.dependencies]
+cffi = ">=1.8,<1.11.3 || >1.11.3"
+six = ">=1.4.1"
+
+[[package]]
+category = "main"
+description = "Decorators for Humans"
+name = "decorator"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*"
+version = "4.4.2"
+
+[[package]]
+category = "main"
+description = "Clean single-source support for Python 3 and 2"
+name = "future"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "0.18.2"
+
+[[package]]
+category = "main"
+description = "Conservatively convert html to markdown"
+name = "html2markdown"
+optional = false
+python-versions = "*"
+version = "0.1.7"
+
+[package.dependencies]
+beautifulsoup4 = "*"
+
+[[package]]
+category = "main"
+description = "Turn HTML into equivalent Markdown-structured text."
+name = "html2text"
+optional = false
+python-versions = ">=3.5"
+version = "2020.1.16"
+
+[[package]]
+category = "main"
+description = "Build complex rules, serialize them as JSON, and execute them in Python"
+name = "json-logic"
+optional = false
+python-versions = "*"
+version = "0.6.3"
+
+[[package]]
+category = "main"
+description = "Build complex rules, serialize them as JSON, and execute them in Python"
+name = "json-logic-qubit"
+optional = false
+python-versions = "*"
+version = "0.9.1"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
+category = "main"
+description = "C parser in Python"
+name = "pycparser"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "2.20"
+
+[[package]]
+category = "main"
+description = "We have made you a wrapper you can't refuse"
+name = "python-telegram-bot"
+optional = false
+python-versions = "*"
+version = "12.7"
+
+[package.dependencies]
+certifi = "*"
+cryptography = "*"
+decorator = ">=4.4.0"
+future = ">=0.16.0"
+tornado = ">=5.1"
+
+[[package]]
+category = "main"
+description = "Python 2 and 3 compatibility utilities"
+name = "six"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "1.14.0"
+
+[[package]]
+category = "main"
+description = "A modern CSS selector implementation for Beautiful Soup."
+name = "soupsieve"
+optional = false
+python-versions = "*"
+version = "1.9.5"
+
+[[package]]
+category = "main"
+description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
+name = "tornado"
+optional = false
+python-versions = ">= 3.5"
+version = "6.0.4"
+
+[metadata]
+content-hash = "dcdbce777e657875ce40efb33dd80344cd3c1beabf3404cdc8ba8c4080ffef66"
+python-versions = "^3.7"
+
+[metadata.hashes]
+beautifulsoup4 = ["594ca51a10d2b3443cbac41214e12dbb2a1cd57e1a7344659849e2e20ba6a8d8", "a4bbe77fd30670455c5296242967a123ec28c37e9702a8a81bd2f20a4baf0368", "d4e96ac9b0c3a6d3f0caae2e4124e6055c5dcafde8e2f831ff194c104f0775a0"]
+certifi = ["1d987a998c75633c40847cc966fcf5904906c920a7f17ef374f5aa4282abd304", "51fcb31174be6e6664c5f69e3e1691a2d72a1a12e90f872cbdb1567eb47b6519"]
+cffi = ["001bf3242a1bb04d985d63e138230802c6c8d4db3668fb545fb5005ddf5bb5ff", "00789914be39dffba161cfc5be31b55775de5ba2235fe49aa28c148236c4e06b", "028a579fc9aed3af38f4892bdcc7390508adabc30c6af4a6e4f611b0c680e6ac", "14491a910663bf9f13ddf2bc8f60562d6bc5315c1f09c704937ef17293fb85b0", "1cae98a7054b5c9391eb3249b86e0e99ab1e02bb0cc0575da191aedadbdf4384", "2089ed025da3919d2e75a4d963d008330c96751127dd6f73c8dc0c65041b4c26", "2d384f4a127a15ba701207f7639d94106693b6cd64173d6c8988e2c25f3ac2b6", "337d448e5a725bba2d8293c48d9353fc68d0e9e4088d62a9571def317797522b", "399aed636c7d3749bbed55bc907c3288cb43c65c4389964ad5ff849b6370603e", "3b911c2dbd4f423b4c4fcca138cadde747abdb20d196c4a48708b8a2d32b16dd", "3d311bcc4a41408cf5854f06ef2c5cab88f9fded37a3b95936c9879c1640d4c2", "62ae9af2d069ea2698bf536dcfe1e4eed9090211dbaafeeedf5cb6c41b352f66", "66e41db66b47d0d8672d8ed2708ba91b2f2524ece3dee48b5dfb36be8c2f21dc", "675686925a9fb403edba0114db74e741d8181683dcf216be697d208857e04ca8", "7e63cbcf2429a8dbfe48dcc2322d5f2220b77b2e17b7ba023d6166d84655da55", "8a6c688fefb4e1cd56feb6c511984a6c4f7ec7d2a1ff31a10254f3c817054ae4", "8c0ffc886aea5df6a1762d0019e9cb05f825d0eec1f520c51be9d198701daee5", "95cd16d3dee553f882540c1ffe331d085c9e629499ceadfbda4d4fde635f4b7d", "99f748a7e71ff382613b4e1acc0ac83bf7ad167fb3802e35e90d9763daba4d78", "b8c78301cefcf5fd914aad35d3c04c2b21ce8629b5e4f4e45ae6812e461910fa", "c420917b188a5582a56d8b93bdd8e0f6eca08c84ff623a4c16e809152cd35793", "c43866529f2f06fe0edc6246eb4faa34f03fe88b64a0a9a942561c8e22f4b71f", "cab50b8c2250b46fe738c77dbd25ce017d5e6fb35d3407606e7a4180656a5a6a", "cef128cb4d5e0b3493f058f10ce32365972c554572ff821e175dbc6f8ff6924f", "cf16e3cf6c0a5fdd9bc10c21687e19d29ad1fe863372b5543deaec1039581a30", "e56c744aa6ff427a607763346e4170629caf7e48ead6921745986db3692f987f", "e577934fc5f8779c554639376beeaa5657d54349096ef24abe8c74c5d9c117c3", "f2b0fa0c01d8a0c7483afd9f31d7ecf2d71760ca24499c8697aeb5ca37dc090c"]
+cryptography = ["091d31c42f444c6f519485ed528d8b451d1a0c7bf30e8ca583a0cac44b8a0df6", "18452582a3c85b96014b45686af264563e3e5d99d226589f057ace56196ec78b", "1dfa985f62b137909496e7fc182dac687206d8d089dd03eaeb28ae16eec8e7d5", "1e4014639d3d73fbc5ceff206049c5a9a849cefd106a49fa7aaaa25cc0ce35cf", "22e91636a51170df0ae4dcbd250d318fd28c9f491c4e50b625a49964b24fe46e", "3b3eba865ea2754738616f87292b7f29448aec342a7c720956f8083d252bf28b", "651448cd2e3a6bc2bb76c3663785133c40d5e1a8c1a9c5429e4354201c6024ae", "726086c17f94747cedbee6efa77e99ae170caebeb1116353c6cf0ab67ea6829b", "844a76bc04472e5135b909da6aed84360f522ff5dfa47f93e3dd2a0b84a89fa0", "88c881dd5a147e08d1bdcf2315c04972381d026cdb803325c03fe2b4a8ed858b", "96c080ae7118c10fcbe6229ab43eb8b090fccd31a09ef55f83f690d1ef619a1d", "a0c30272fb4ddda5f5ffc1089d7405b7a71b0b0f51993cb4e5dbb4590b2fc229", "bb1f0281887d89617b4c68e8db9a2c42b9efebf2702a3c5bf70599421a8623e3", "c447cf087cf2dbddc1add6987bbe2f767ed5317adb2d08af940db517dd704365", "c4fd17d92e9d55b84707f4fd09992081ba872d1a0c610c109c18e062e06a2e55", "d0d5aeaedd29be304848f1c5059074a740fa9f6f26b84c5b63e8b29e73dfc270", "daf54a4b07d67ad437ff239c8a4080cfd1cc7213df57d33c97de7b4738048d5e", "e993468c859d084d5579e2ebee101de8f5a27ce8e2159959b6673b418fd8c785", "f118a95c7480f5be0df8afeb9a11bd199aa20afab7a96bcf20409b411a3a85f0"]
+decorator = ["41fa54c2a0cc4ba648be4fd43cff00aedf5b9465c9bf18d64325bc225f08f760", "e3a62f0520172440ca0dcc823749319382e377f37f140a0b99ef45fecb84bfe7"]
+future = ["b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"]
+html2markdown = ["92baf932c7f216be6d9459a191d45b6401e204bda7a5413febafa875512cfa8c"]
+html2text = ["c7c629882da0cf377d66f073329ccf34a12ed2adf0169b9285ae4e63ef54c82b", "e296318e16b059ddb97f7a8a1d6a5c1d7af4544049a01e261731d2d5cc277bbb"]
+json-logic = ["d67d4656f4f5b427858141fa8247bf3062d612ebed99005b069d92e31139375f", "dd873af85ae44292cdd708357c16d7788cf7590befa8fa1250cced27589fa7f0"]
+json-logic-qubit = ["d024ff0c77659eb97ddf742e0bd1b7caacd44bc53fdfc8f3977f4062a3c3b056"]
+pycparser = ["2d475327684562c3a96cc71adf7dc8c4f0565175cf86b6d7a404ff4c771f15f0", "7582ad22678f0fcd81102833f60ef8d0e57288b6b5fb00323d101be910e35705"]
+python-telegram-bot = ["218b0583afb8baeefe6f2f1ddd8f1bb1ae30f0af3ce9160a372abd2cdf258eef", "6878cc642114c8c116ceada41639a9df487f42d5478d9f34cae513cc5c260dee"]
+six = ["236bdbdce46e6e6a3d61a337c0f8b763ca1e8717c03b369e87a7ec7ce1319c0a", "8f3cd2e254d8f793e7f3d6d9df77b92252b52637291d0f0da013c76ea2724b6c"]
+soupsieve = ["bdb0d917b03a1369ce964056fc195cfdff8819c40de04695a80bc813c3cfa1f5", "e2c1c5dee4a1c36bcb790e0fabd5492d874b8ebd4617622c4f6a731701060dda"]
+tornado = ["0fe2d45ba43b00a41cd73f8be321a44936dc1aba233dee979f17a042b83eb6dc", "22aed82c2ea340c3771e3babc5ef220272f6fd06b5108a53b4976d0d722bcd52", "2c027eb2a393d964b22b5c154d1a23a5f8727db6fda837118a776b29e2b8ebc6", "5217e601700f24e966ddab689f90b7ea4bd91ff3357c3600fa1045e26d68e55d", "5618f72e947533832cbc3dec54e1dffc1747a5cb17d1fd91577ed14fa0dc081b", "5f6a07e62e799be5d2330e68d808c8ac41d4a259b9cea61da4101b83cb5dc673", "c58d56003daf1b616336781b26d184023ea4af13ae143d9dda65e31e534940b9", "c952975c8ba74f546ae6de2e226ab3cc3cc11ae47baf607459a6728585bb542a", "c98232a3ac391f5faea6821b53db8db461157baa788f5d6222a193e9456e1740"]
