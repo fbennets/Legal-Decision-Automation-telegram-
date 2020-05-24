@@ -1,0 +1,27 @@
+{
+	"name": "Open Decision - Telegram Bot",
+	"description": "Telegram Bot to interpret queries from the Open Decision Expert System.",
+	"repository": "https://github.com/fbennets/Open-Decision-Telegram-Bot",
+	"logo": "https://od-static.azureedge.net/static/img/od-brand/od_logo_grey.png",
+	"website": "https://open-decision.org/",
+	"env": {
+		"OD_BOT_TOKEN": {
+			"description": "Set the Telegram API token for the bot account.",
+			"value": ""
+		},
+		"OD_BOT_HEROKU_APP_NAME": {
+			"description": "Enter the name of your Heroku App here.",
+			"value": ""
+		},
+		"OD_BOT_ADMINS": {
+			"description": "Set the Telegram usernames for bot administrators.",
+			"value": "",
+			"required": false
+		},
+		"OD_BOT_BUILDER_URL": {
+			"description": "Set the URL to your self-hosted Open Decision Builder instance, if you want to use your own.",
+			"value": "",
+			"required": false
+		},
+	}
+}

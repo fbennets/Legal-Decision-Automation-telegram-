@@ -245,8 +245,23 @@ def main():
 
     #dp.add_error_handler(error)
 
-    # Start the Bot
-    updater.start_polling()
+    if settings.WEBHOOK:
+        updater.start_webhook(listen='0.0.0.0',
+                      port=settings.WEBHOOK_PORT,
+                      url_path=settings.TOKEN,
+                      key='private.key',
+                      cert='cert.pem',
+                      webhook_url=f"https://example.com:{settings.WEBHOOK_PORT}/{settings.TOKEN}")
+
+    elif settings.HEROKU_APP_NAME:
+        updater.start_webhook(listen="0.0.0.0",
+                              port=settings.WEBHOOK_PORT,
+                              url_path=settings.TOKEN)
+        updater.bot.set_webhook(f"https://{settings.HEROKU_APP_NAME}.herokuapp.com/{settings.TOKEN}")
+
+    else:
+        # Start the Bot
+        updater.start_polling()
 
     # Run the bot until you press Ctrl-C or the process receives SIGINT,
     # SIGTERM or SIGABRT. This should be used most of the time, since

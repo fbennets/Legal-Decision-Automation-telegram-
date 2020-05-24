@@ -29,8 +29,56 @@ The bot can display trees, that have been published using the Open Decision buil
 
 The current bot version is not production-ready and only for testing purposes.
 
+## Prerequisites
+To deploy your own bot, you need to create a Telegram Bot Account and get your API token (treat it like a password and keep it secret). To do so, talk to the [Botfather](https://t.me/botfather) on Telegram and follow the instructions. For more information, [see here](https://core.telegram.org/bots#6-botfather).  
+
+## Recommended: Deploy on Heroku
+The easiest way to deploy your own instance of the Open Decision Telegram Bot is using the free Heroku plan. First, click the Deploy-button below. If you don't have a Heroku account, you need to register for free.
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+### Basic Configuration
+ Enter a name in the "Create New App" dialog opening after you clicked the Deploy-button. The App name doesn't matter to much, as users of your bot will never see the name.
+
+Enter your API Token (see [here](#prerequisites) in the "OD_BOT_TOKEN" field of the "Config Vars" section.
+
+```bash
+# Example:
+644739147:AAGMPo-Jz3mKRnHRTnrPEDi7jUF1vqNOD5k
+
+```
+Enter the name of your App you just set above in the "OD_BOT_HEROKU_APP_NAME" field.
+
+```bash
+# Example:
+mytelegrambot
+```
+
+You should enter your public Telegram username in the "OD_BOT_ADMINS" field. You can enter multiple usernames by seperating the with a comma. Every user in this list can customise the bot on the fly on Telegram. If you don't have a username on Telegram, you can set one in the [Telegram settings](https://telegram.org/faq#q-what-are-usernames-how-do-i-get-one).
+
+```bash
+# Example:
+admin1, admin2
+```
+
+If you're using your own (self-hosted) instance of the Open Decision builder, set "OD_BOT_BUILDER_URL" to your custom domain.
+
+```bash
+# Default value is:
+https://builder.open-decision.org
+```
+For additional configuration options, see here. However, all settings except for the three above can be set using the Admin-Settings of the Bot using Telegram.
+
+### Finish Heroku Deployment
+Click the "Deploy app" button to finish the deployment. Heroku will deploy your bot. After the deployment is finished, you can contact your bot on Telegram using the Link you received from the Botfather or by searching your bot's name on Telegram.
+If you want to change you API token, the bot admins or the Builder URL, you can do so in the Heroku Dashboard, under Settings in the Config Vars section.
+All other settings can be made using the built-in settings of the Bot using Telegram.
+
+## Manual Deployment
+You can deploy the bot on any Virtual Private Server (VPS) or Cloud Service supporting Python 3 - which should be nearly every one.
+
 ### Set-up a VPS & start your bot
-You need to set up a Virtual Private Server (VPS) to run the bot. There are plenty of tutorials online.  
+You need to set up a VPS to run the bot. There are plenty of tutorials online.  
 Take a look at the  [hoster list](https://github.com/python-telegram-bot/python-telegram-bot/wiki/Where-to-host-Telegram-Bots) for some suggestions on where to host your bot. From our experience, [Uberspace](https://uberspace.de/en/) is awesome to get your bot up and running quickly.
 
 Use SSH to get a shell on you VPS and clone this repository using:
@@ -44,7 +92,7 @@ Next install the requirements.
 cd bot
 pip install -r requirements.txt
 ```
-Afterwards, you need create a Telegram bot account and get the API key. To do so, talk to the [Botfather](https://t.me/botfather) on Telegram and follow the instructions. For more information, [see here](https://core.telegram.org/bots#6-botfather).  
+
 Then, you need to set your API token as an environment variable. Enter this in your shell:
 ```bash
 export OD_BOT_TOKEN=YourTokenHere
