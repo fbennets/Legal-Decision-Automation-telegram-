@@ -243,7 +243,7 @@ def main():
     # Log all errors. Commenting out this line will make the bot script stop complety if an error occurs but provides the full python error trace.
     #If enabled, there will be extended telegram data on the update that caused the error, but no python error trace.
 
-    #dp.add_error_handler(error)
+    dp.add_error_handler(error)
 
     if settings.WEBHOOK:
         updater.start_webhook(listen='0.0.0.0',
