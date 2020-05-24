@@ -142,7 +142,8 @@ def check_input(update, context):
 
             with codecs.open(settings_file, 'r', encoding='utf-8') as fi, \
                 codecs.open(tmp_name, 'w', encoding='utf-8') as fo:
-
+                
+                # If message var exists overwrite it
                 for line in fi:
                     if re.match(re_pattern, line):
                         var_exists = True
@@ -150,6 +151,9 @@ def check_input(update, context):
                     else:
                         new_line = line
                     fo.write(new_line)
+
+                if not var_exists:
+                    fo.write(new_entry)
 
             os.rename(settings_file, 'admin_settings_bak') # rename original
             os.rename(tmp_name, settings_file) # rename temp to original name
