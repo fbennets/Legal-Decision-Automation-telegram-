@@ -22,6 +22,6 @@
 			"description": "Set the URL to your self-hosted Open Decision Builder instance, if you want to use your own.",
 			"value": "",
 			"required": false
-		},
+		}
 	}
 }
