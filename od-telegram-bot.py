@@ -256,7 +256,8 @@ def main():
                       webhook_url=f"https://example.com:{settings.WEBHOOK_PORT}/{settings.TOKEN}")
 
     elif settings.HEROKU_APP_NAME:
-        updater.start_webhook(listen="0.0.0.0",
+        HEROKU_PORT = os.environ.get('PORT')
+        updater.start_webhook(listen=HEROKU_PORT,
                               port=settings.WEBHOOK_PORT,
                               url_path=settings.TOKEN)
         updater.bot.set_webhook(f"https://{settings.HEROKU_APP_NAME}.herokuapp.com/{settings.TOKEN}")
