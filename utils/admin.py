@@ -37,9 +37,52 @@ def show_inline_menu(update, context, before, success_message = None):
     reply_markup = InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
 
     to_append = ''
+
+    if current_menu_step == 'edit_messages':
+        # For convenience the messages are directly loaded from the according lang file
+
+        lang_file = f'locale/{settings.LANG}-default.py'
+        # Pattern to match variable names in the lang file
+        re_pattern = fr'^\s*([a-z|_]*)\s*='
+        messages = []
+
+        # Open the lang file
+        lines = []
+        with codecs.open(lang_file, 'r', encoding='utf-8') as fi:
+            for line in fi:
+                lines.append(line)
+
+        for idx, line in enumerate(lines):
+            # If a variable is found
+            match = re.search(re_pattern, line)
+            if match:
+                # List with the message name
+                single_message = [match.group(1)]
+                # Get the comment in the line before
+                comment = lines[idx-1]
+                # Split the name and the description of the variable
+                description = [i.strip().replace('#', '') for i in comment.split('-')]
+                # Append the name and description to the message
+                single_message += description
+                messages.append(single_message)
+
+        button_list = [InlineKeyboardButton(single_message[1], callback_data=idx) for idx, single_message in enumerate(messages)]
+        len_button_list = len(button_list)
+        button_list.append(InlineKeyboardButton(_('back_button'), callback_data=len_button_list))
+        reply_markup = InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
+        to_append += f'\nPlease note, that you will set custom messages for the currently selected language {settings.LANG}.\n'
+        context.chat_data['messages'] = messages
+
+    elif current_menu_step == 'edit_single_message':
+        messages = context.chat_data['messages']
+        single_message_index = context.chat_data['single_message_index']
+        single_message = messages[single_message_index]
+        to_append += f'Message: {single_message[1]}\nLanguage: {settings.LANG}\nDescription: {single_message[2]}\n'
+        to_append += f'The current value is: {_(single_message[0])}'
+
+
     if menu_data[current_menu_step]['type'] == 'input':
-        to_append = '\nWrite X to delete the value.'
-        #to_append += f' The current value is: {}'
+        to_append += '\nWrite X to delete the value.'
 
     if before == 'input':
         message = success_message if success_message else ""
@@ -59,7 +102,19 @@ def check_query(update, context):
     query = update.callback_query
     query.answer()
     answer = int(query.data)
+
     current_menu_step = context.chat_data['current_menu_step']
+
+    if current_menu_step == 'edit_messages':
+        len_button_list = len(context.chat_data['messages'])
+        if answer == len_button_list:
+            answer = 0
+        else:
+            context.chat_data['menu_log'].append(current_menu_step)
+            context.chat_data['single_message_index'] = answer
+            context.chat_data['current_menu_step'] = 'edit_single_message'
+            return show_inline_menu(update, context, 'menu')
+
     context.chat_data['menu_log'].append(current_menu_step)
 
     if menu_data[current_menu_step]['type'] == 'select':
@@ -75,11 +130,11 @@ def check_query(update, context):
             context.chat_data['current_menu_step'] = 'start'
             return utils.user_menu.show_inline_menu(update, context, 'menu')
 
+
     # If admin was supposed to make an input but used the buttons instead
-    # Now: also if user used back button
+    # also if user used back button
     elif menu_data[current_menu_step]['type'] == 'input':
         log = context.chat_data['menu_log']
-
         try:
             if menu_data[current_menu_step]['logic'][answer] == 'input_back':
                 current_menu_step = context.chat_data['menu_log'][-2]
@@ -142,7 +197,7 @@ def check_input(update, context):
 
             with codecs.open(settings_file, 'r', encoding='utf-8') as fi, \
                 codecs.open(tmp_name, 'w', encoding='utf-8') as fo:
-                
+
                 # If message var exists overwrite it
                 for line in fi:
                     if re.match(re_pattern, line):
@@ -153,6 +208,7 @@ def check_input(update, context):
                     fo.write(new_line)
 
                 if not var_exists:
+                    fo.write('\n')
                     fo.write(new_entry)
 
             os.rename(settings_file, 'admin_settings_bak') # rename original
@@ -164,8 +220,13 @@ def check_input(update, context):
                     success_message += "\n" + getattr(settings, var) + "\n"
 
         elif menu_data[current_menu_step]['value'] == 'message':
+
         # Open message files and set new var
-            var = menu_data[current_menu_step]['var']
+            messages = context.chat_data['messages']
+            single_message_index = context.chat_data['single_message_index']
+            single_message = single_message = messages[single_message_index]
+
+            var = single_message[0]
             lang_file = f'locale/{settings.LANG}.py'
             re_pattern = rf'^{var}.*$'
             new_entry = f"{var} = '{new_value}'"
@@ -186,20 +247,21 @@ def check_input(update, context):
                     fo.write(new_line)
 
                 if not var_exists:
+                    fo.write('\n')
                     fo.write(new_entry)
 
             os.rename(lang_file, lang_file + '_bak') # rename original
             os.rename(tmp_name, lang_file) # rename temp to original name
 
             reload_settings()
-            success_message += "\n" + _(var) + "\n"
-
+            success_message += f"Very well, Sir. I set {single_message[1]} to: \n{_(var)}\n"
+            current_menu_step = 'edit_messages'
 
     # Send 'success' with according keyboard above
         current_menu_step = context.chat_data['menu_log'][-1]
         context.chat_data['menu_log'].pop()
         context.chat_data['current_menu_step'] = current_menu_step
-        show_inline_menu(update, context, 'input', success_message)
+        return show_inline_menu(update, context, 'input', success_message)
 
 def reload_settings():
     settings.reload_settings()

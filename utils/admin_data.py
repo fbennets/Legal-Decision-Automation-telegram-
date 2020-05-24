@@ -12,19 +12,15 @@ admin_menu_data = {
       4: 'available_queries',
       5: 'reboot_bot',
       6: 'exit_settings'
-    } 
+    }
   },
   'edit_messages': {
     'text': 'Please select the message you want to edit.',
     'type': 'select',
-    'answers': ['Welcome Message', 'End Message', 'Asking for Access Code', '<< Back', 'Exit settings'],
+    'answers': ['<< Back'],
     'logic':{
-      0: 'welcome_message',
-      1: 'end_message',
-      2: 'asking_for_access_code',
-      3: 'start',
-      4: 'exit_settings'
-    } 
+    0: 'back'
+    }
   },
 
    'edit_demo': {
@@ -39,24 +35,11 @@ admin_menu_data = {
     }
   },
 
-   'welcome_message': {
-    'text': "Okay, enter your new welcome message, which is the first message that is send to the user.",
-    'type': 'input',
-    'value': 'message',
-    'var': 'welcome_message',
-    'success': 'Okay, the welcome message was set to: ',
-    'answers': ['<< Back'],
-        'logic':{
-      0: 'input_back'
-    }
-  },
 
-   'end_message': {
-    'text': "Okay, enter your new end message, which is shown, after the user finished a query.",
+   'edit_single_message': {
+    'text': "",
     'type': 'input',
     'value': 'message',
-    'var': 'end_message',
-    'success': 'Okay, the end message was set to: ',
     'answers': ['<< Back'],
     'logic':{
       0: 'input_back'
@@ -118,7 +101,7 @@ admin_menu_data = {
     'logic':{
       0: 'confirm_reboot',
       1: 'start'
-    } 
+    }
   },
      'confirm_reboot': {
     'text': "Okay, click /reboot to restart the bot. Wait for some seconds and type /start afterwards.",
