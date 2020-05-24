@@ -8,7 +8,7 @@ ADMINS = [admin.strip() for admin in os.environ.get('OD_BOT_ADMINS', '').split('
 HEROKU_APP_NAME = os.environ.get('OD_BOT_HEROKU_APP_NAME', False)
 WEBHOOK = os.environ.get('OD_BOT_WEBHOOK_URL', False)
 WEBHOOK_PORT = int(os.environ.get('OD_BOT_WEBHOOK_PORT', '8443'))
-
+DEBUG = os.environ.get('OD_BOT_DEBUG', False)
 
 OD_URL = admin_set.OD_URL if admin_set.OD_URL and admin_set.OD_URL != '' else os.environ.get('OD_BOT_BUILDER_URL', 'https://builder.open-decision.org')
 DEMO_QUERY = admin_set.DEMO_QUERY if admin_set.DEMO_QUERY and admin_set.QUERY != '' else os.environ.get('OD_BOT_DEMO_QUERY')

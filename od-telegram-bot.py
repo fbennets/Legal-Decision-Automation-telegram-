@@ -26,9 +26,12 @@ from utils.utils import send_typing_action, user_is_admin, restricted
 text2markup = html2text.HTML2Text()
 text2markup.unicode_snob = True
 
+
 # Set up the logging module, change level=logging.INFO to level=logging.DEBUG to reveive extended debug information
+logging_level = level=logging.INFO if not settings.DEBUG else logging.DEBUG
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
+                    level=logging_level)
 
 logger = logging.getLogger(__name__)
 
@@ -244,8 +247,8 @@ def main():
 
     # Log all errors. Commenting out the eror_handler-line will make the bot script stop complety if an error occurs but provides the full python error trace.
     #If enabled, there will be extended telegram data on the update that caused the error, but no python error trace.
-
-    dp.add_error_handler(error)
+    if not settings.DEBUG:
+        dp.add_error_handler(error)
 
     if settings.WEBHOOK:
         updater.start_webhook(listen='0.0.0.0',
