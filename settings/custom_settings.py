@@ -1,5 +1,4 @@
-OD_URL = ''
 DEMO_QUERY = ''
-LANG = 'en'
+LANG = ''
 GREET_IMAGE = ''
 QUERY_LIST = [['Rücklastschrift Gebühren', 'habbiovzxt']]

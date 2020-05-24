@@ -10,7 +10,7 @@ WEBHOOK = os.environ.get('OD_BOT_WEBHOOK_URL', False)
 WEBHOOK_PORT = int(os.environ.get('OD_BOT_WEBHOOK_PORT', '8443'))
 DEBUG = os.environ.get('OD_BOT_DEBUG', False)
 
-OD_URL = admin_set.OD_URL if admin_set.OD_URL and admin_set.OD_URL != '' else os.environ.get('OD_BOT_BUILDER_URL', 'https://builder.open-decision.org')
+OD_URL = os.environ.get('OD_BOT_BUILDER_URL', '') if os.environ.get('OD_BOT_BUILDER_URL', '') != '' else 'https://builder.open-decision.org'
 DEMO_QUERY = admin_set.DEMO_QUERY if admin_set.DEMO_QUERY and admin_set.QUERY != '' else os.environ.get('OD_BOT_DEMO_QUERY')
 LANG = admin_set.LANG if admin_set.LANG and admin_set.LANG != '' else os.environ.get('OD_BOT_LANG', 'en')
 GREET_IMAGE = admin_set.GREET_IMAGE if admin_set.GREET_IMAGE and admin_set.GREET_IMAGE != '' else os.environ.get('OD_BOT_GREET_IMAGE')
