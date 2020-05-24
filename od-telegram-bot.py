@@ -1,5 +1,5 @@
 # Import regex, json, os and logging modules from standard library
-import re, json, logging, requests, importlib, sys, os
+import re, json, logging, importlib, sys, os
 from threading import Thread
 
 # Import modules from python-telegram-bot
@@ -11,6 +11,8 @@ from telegram.ext import (Updater, CommandHandler, MessageHandler, CallbackQuery
 from json_logic import jsonLogic
 # To convert html formatted text from the Open Decision data format to Markdown text
 import html2text
+# To get tree data from callback
+import requests
 
 from utils.get_strings import get_strings as _
 import utils.admin
@@ -240,7 +242,7 @@ def main():
 
     dp.add_handler(conv_handler)
 
-    # Log all errors. Commenting out this line will make the bot script stop complety if an error occurs but provides the full python error trace.
+    # Log all errors. Commenting out the eror_handler-line will make the bot script stop complety if an error occurs but provides the full python error trace.
     #If enabled, there will be extended telegram data on the update that caused the error, but no python error trace.
 
     dp.add_error_handler(error)
